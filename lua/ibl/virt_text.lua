@@ -86,6 +86,9 @@ M.get = function(
         local sa = scope_active
         local char = get_char(char_map[ws], (ws == whitespace.SPACE and i) or indent_index)
 
+        scope_index = indent_index
+        scope_hl = utils.tbl_get_index(highlights.scope, scope_index)
+
         if indent.is_indent(ws) then
             whitespace_hl = utils.tbl_get_index(highlights.whitespace, indent_index).char
             if vim.fn.strwidth(char) == 0 then
